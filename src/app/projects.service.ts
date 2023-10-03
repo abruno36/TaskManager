@@ -23,5 +23,15 @@ export class ProjectsService
   {
     return this.httpClient.post<Project>(this.urlPrefix + "/api/projects", newProject);
   }
+
+  updateProject(existingProject: Project): Observable<Project>
+  {
+    return this.httpClient.put<Project>(this.urlPrefix + "/api/projects", existingProject, { responseType: "json" });
+  }
+
+  deleteProject(ProjectID: number): Observable<string>
+  {
+    return this.httpClient.delete<string>(this.urlPrefix + "/api/projects?ProjectID=" + ProjectID);
+  }
 }
 
